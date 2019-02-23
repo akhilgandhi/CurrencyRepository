@@ -95,8 +95,8 @@
             //   'https://www.googleapis.com/auth/spreadsheets'
             //   'https://www.googleapis.com/auth/spreadsheets.readonly'
             var SCOPE = ['https://www.googleapis.com/auth/drive',
-                        'https://www.googleapis.com/auth/spreadsheets',
-                        'https://www.googleapis.com/auth/drive.file'];
+                'https://www.googleapis.com/auth/drive.file',
+                'https://www.googleapis.com/auth/spreadsheets'];
 
             gapi.client.init({
                 'apiKey': API_KEY,
@@ -128,7 +128,7 @@
         }
 
         function handleSaveClick() {
-            makeApiCall(action='write');
+            makeApiCall(action = "write");
         }
 
         function populateSheet(result) {
@@ -148,15 +148,15 @@
     <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
     <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
 
-    <input id="date" type="date"/>
-    <input id="denomination" type="number"/>
-    <input id="currencyValue" type="text"/>
+    <input id="date" type="date" />
+    <input id="denomination" type="number" />
+    <input id="currencyValue" type="text" />
     <div class="sheets-data">
-            <table id="data">
-    
-            </table>
+        <table id="data">
+
+        </table>
     </div>
-    <input type="submit" value="Save" onclick="handleSaveClick()"/>
+    <input type="submit" value="Save" onclick="handleSaveClick()" />
 </body>
 
 </html>

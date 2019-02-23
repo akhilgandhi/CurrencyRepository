@@ -95,8 +95,8 @@
             //   'https://www.googleapis.com/auth/spreadsheets'
             //   'https://www.googleapis.com/auth/spreadsheets.readonly'
             var SCOPE = [
-            //    'https://www.googleapis.com/auth/drive',
-            //    'https://www.googleapis.com/auth/drive.file',
+                'https://www.googleapis.com/auth/drive',
+                'https://www.googleapis.com/auth/drive.file',
                 'https://www.googleapis.com/auth/spreadsheets'
             ];
             // var SCOPE = 'https://www.googleapis.com/auth/spreadsheets.readonly';
@@ -108,9 +108,7 @@
                 'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
             }).then(function () {
                 gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
-                gapi.auth2.getAuthInstance().isSignedIn.listen(handleSaveClick);
                 updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-                handleSaveClick(gapi.auth2.getAuthInstance().isSignedIn.get());
             });
         }
 
@@ -132,10 +130,8 @@
             gapi.auth2.getAuthInstance().signOut();
         }
 
-        function handleSaveClick(isSignedIn) {
-            if (isSignedIn) {
+        function handleSaveClick() {
             makeApiCall(action = "write");
-            }
         }
 
         function populateSheet(result) {

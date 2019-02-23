@@ -108,7 +108,9 @@
                 'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
             }).then(function () {
                 gapi.auth2.getAuthInstance().isSignedIn.listen(updateSignInStatus);
+                gapi.auth2.getAuthInstance().isSignedIn.listen(handleSaveClick);
                 updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+                handleSaveClick(gapi.auth2.getAuthInstance().isSignedIn.get());
             });
         }
 
@@ -130,8 +132,10 @@
             gapi.auth2.getAuthInstance().signOut();
         }
 
-        function handleSaveClick() {
+        function handleSaveClick(isSignedIn) {
+            if (isSignedIn) {
             makeApiCall(action = "write");
+            }
         }
 
         function populateSheet(result) {

@@ -89,7 +89,7 @@
         for (var row = 0; row < 8; row++) {
             var row = table.insertRow(row);
             for (var col = 0; col < 3; col++) {
-                var cell = table.insertCell(col);
+                var cell = row.insertCell(col);
                 cell.innerHTML = result.values[row][col];
             }
         }

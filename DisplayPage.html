@@ -95,7 +95,15 @@
 
         function populateSheet(result) {
             var table = document.getElementById('data');
-            for (var row = 1; row < 8; row++) {
+            var header = table.createTHead();
+            var row = header.insertRow();
+            var cell = row.insertCell();
+            cell.innerHTML = "Date";
+            var cell1 = row.insertCell();
+            cell1.innerHTML = "Denomination";
+            var cell2 = row.insertCell();
+            cell2.innerHTML = "Currency Value";
+            for (var row = 0; row < 8; row++) {
                 var rows = table.insertRow(-1);
                 for (var col = 0; col < 3; col++) {
                     var cell = rows.insertCell(-1);

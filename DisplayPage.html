@@ -95,19 +95,11 @@
 
         function populateSheet(result) {
             var table = document.getElementById('data');
-            var header = table.createTHead();
-            var row = header.insertRow();
-            var cell = row.insertCell();
-            cell.innerHTML = "Date";
-            var cell1 = row.insertCell();
-            cell1.innerHTML = "Denomination";
-            var cell2 = row.insertCell();
-            cell2.innerHTML = "Currency Value";
             for (var row = 0; row < 8; row++) {
                 var rows = table.insertRow(-1);
                 for (var col = 0; col < 3; col++) {
                     var cell = rows.insertCell(-1);
-                    cell.innerHTML = result.values[row][col];
+                    cell.innerHTML += result.values[row][col];
                 }
             }
         }
@@ -120,7 +112,13 @@
 
     <div class="sheets-data">
         <table id="data">
-
+            <th>
+                <tr>
+                    <td>Date</td>
+                    <td>Denomination</td>
+                    <td>Currency Value</td>
+                </tr>
+            </th>
         </table>
     </div>
 

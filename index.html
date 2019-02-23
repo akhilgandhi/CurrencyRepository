@@ -85,12 +85,13 @@
     }
 
     function populateSheet(result) {
+        var table = document.getElementById('data');
         for (var row = 1; row < 8; row++) {
-            document.getElementById('data').innerHTML += '<tr>';
+            var row = table.insertRow(row);
             for (var col = 0; col < 3; col++) {
-                document.getElementById('data').innerHTML += '<td>' + result.values[row][col] + '</td>';
+                var cell = table.insertCell(col);
+                cell.innerHTML = result.values[row][col];
             }
-            document.getElementById('data').innerHTML += '</tr>';
         }
     }
     </script>

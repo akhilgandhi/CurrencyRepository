@@ -16,7 +16,7 @@ function makeApiCall(action = "read") {
         var txt = writeVal[0][0].replace("/","");
         if (txt === writeVal[0][2]) {
             document.getElementById('errorCurrency').innerHTML = "Currency value doesn't match with date";
-            check = false;
+            checks = false;
         }
         var params = {
             // The ID of the spreadsheet to update.

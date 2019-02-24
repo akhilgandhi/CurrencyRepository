@@ -9,45 +9,12 @@
   autoload statement.
 -->
     <script type="text/javascript" src='https://www.gstatic.com/charts/loader.js'></script>
+
 </head>
 
 <body>
 
     <script>
-        function makeApiCall() {
-            google.charts.load('current', {
-                callback: function () {
-                    document.getElementById('search').addEventListener('click', searchSheet, false);
-                    searchSheet();
-
-                    function searchSheet() {
-                        searchText = document.getElementById('searchCurrency').value;
-
-                        var queryToSelect = new google.visualization.Query('https://docs.google.com/spreadsheet/ccc?key=1SFbgvc3m2pcyX_VUWA5YJHGvBintNSBrh9xKzJ9sEoo&sheet=QUERY');
-                        if (searchText !== '') {
-                            queryToSelect.setQuery('select A, B, C where C like "%' + searchText + '%"');
-                        }
-
-                        queryToSelect.send(function (response) {
-                            if (response.isError()) {
-                                console.log('Error in query : ' + response.getMessage() + ' ' + response.getDetailedMessage());
-                                return;
-                            }
-
-                            var dataTable = response.getDataTable();
-                            for (var i = 0; i < dataTable.getNumberOfColumns(); i++) {
-                                document.getElementById(datatable.getColumnLabel(i)).value =
-                                    (datatable.getNumberOfRows() > 0) ? datatable.getValue(0, i) : '';
-                            }
-
-                            var chart = new google.visualization.Table(document.getElementById('table_div'));
-                            chart.draw(datatable);
-                        });
-                    }
-                },
-                packages: ['table']
-            })
-        }
         function initClient() {
             var API_KEY = 'AIzaSyDGrlgb2SkHgvGkvWqjlv_G3AAqq-v113M';  // TODO: Update placeholder with desired API key.
 
@@ -59,7 +26,7 @@
             //   'https://www.googleapis.com/auth/drive.readonly'
             //   'https://www.googleapis.com/auth/spreadsheets'
             //   'https://www.googleapis.com/auth/spreadsheets.readonly'
-            var SCOPE = "https://www.googleapis.com/auth/spreadsheets.readonly";
+            var SCOPE = "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/spreadsheets";
 
             gapi.client.init({
                 'apiKey': API_KEY,
@@ -78,7 +45,38 @@
 
         function updateSignInStatus(isSignedIn) {
             if (isSignedIn) {
-                makeApiCall();
+                google.charts.load('current', {
+                    callback: function () {
+                        document.getElementById('search').addEventListener('click', searchSheet, false);
+                        searchSheet();
+
+                        function searchSheet() {
+                            searchText = document.getElementById('searchCurrency').value;
+
+                            var queryToSelect = new google.visualization.Query('https://docs.google.com/spreadsheet/ccc?key=1SFbgvc3m2pcyX_VUWA5YJHGvBintNSBrh9xKzJ9sEoo&sheet=QUERY');
+                            if (searchText !== '') {
+                                queryToSelect.setQuery('select A, B, C where C like "%' + searchText + '%"');
+                            }
+
+                            queryToSelect.send(function (response) {
+                                if (response.isError()) {
+                                    console.log('Error in query : ' + response.getMessage() + ' ' + response.getDetailedMessage());
+                                    return;
+                                }
+
+                                var dataTable = response.getDataTable();
+                                for (var i = 0; i < dataTable.getNumberOfColumns(); i++) {
+                                    document.getElementById(datatable.getColumnLabel(i)).value =
+                                        (datatable.getNumberOfRows() > 0) ? datatable.getValue(0, i) : '';
+                                }
+
+                                var chart = new google.visualization.Table(document.getElementById('table_div'));
+                                chart.draw(datatable);
+                            });
+                        }
+                    },
+                    packages: ['table']
+                })
             }
         }
 
@@ -93,10 +91,6 @@
     <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
         onreadystatechange="if (this.readyState === 'complete') this.onload()">
         </script>
-
-    <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
-    <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
-
     <input id="searchCurrency" type="text" />
     <button id="search">Search</button>
     <input id="Date" type="text" />

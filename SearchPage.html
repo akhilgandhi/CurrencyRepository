@@ -9,15 +9,45 @@
   autoload statement.
 -->
     <script type="text/javascript" src='https://www.gstatic.com/charts/loader.js'></script>
-    <script type="text/javascript">
-        var ssId = '1SFbgvc3m2pcyX_VUWA5YJHGvBintNSBrh9xKzJ9sEoo';
-
-    </script>
 </head>
 
 <body>
 
     <script>
+        function makeApiCall() {
+            google.charts.load('current', {
+                callback: function () {
+                    document.getElementById('search').addEventListener('click', searchSheet, false);
+                    searchSheet();
+
+                    function searchSheet() {
+                        searchText = document.getElementById('searchCurrency').value;
+
+                        var queryToSelect = new google.visualization.Query('https://docs.google.com/spreadsheet/ccc?key=1SFbgvc3m2pcyX_VUWA5YJHGvBintNSBrh9xKzJ9sEoo&sheet=QUERY');
+                        if (searchText !== '') {
+                            queryToSelect.setQuery('select A, B, C where C like "%' + searchText + '%"');
+                        }
+
+                        queryToSelect.send(function (response) {
+                            if (response.isError()) {
+                                console.log('Error in query : ' + response.getMessage() + ' ' + response.getDetailedMessage());
+                                return;
+                            }
+
+                            var dataTable = response.getDataTable();
+                            for (var i = 0; i < dataTable.getNumberOfColumns(); i++) {
+                                document.getElementById(datatable.getColumnLabel(i)).value =
+                                    (datatable.getNumberOfRows() > 0) ? datatable.getValue(0, i) : '';
+                            }
+
+                            var chart = new google.visualization.Table(document.getElementById('table_div'));
+                            chart.draw(datatable);
+                        });
+                    }
+                },
+                packages: ['table']
+            })
+        }
         function initClient() {
             var API_KEY = 'AIzaSyDGrlgb2SkHgvGkvWqjlv_G3AAqq-v113M';  // TODO: Update placeholder with desired API key.
 
@@ -48,38 +78,7 @@
 
         function updateSignInStatus(isSignedIn) {
             if (isSignedIn) {
-                google.charts.load('current', {
-                    callback: function () {
-                        document.getElementById('search').addEventListener('click', searchSheet, false);
-                        searchSheet();
-
-                        function searchSheet() {
-                            searchText = document.getElementById('searchCurrency').value;
-
-                            var queryToSelect = new google.visualization.Query('https://docs.google.com/spreadsheet/ccc?key=1SFbgvc3m2pcyX_VUWA5YJHGvBintNSBrh9xKzJ9sEoo&sheet=QUERY');
-                            if (searchText !== '') {
-                                queryToSelect.setQuery('select A, B, C where C like "%' + searchText + '%"');
-                            }
-
-                            queryToSelect.send(function (response) {
-                                if (response.isError()) {
-                                    console.log('Error in query : ' + response.getMessage() + ' ' + response.getDetailedMessage());
-                                    return;
-                                }
-
-                                var dataTable = response.getDataTable();
-                                for (var i = 0; i < dataTable.getNumberOfColumns(); i++) {
-                                    document.getElementById(datatable.getColumnLabel(i)).value =
-                                        (datatable.getNumberOfRows() > 0) ? datatable.getValue(0, i) : '';
-                                }
-
-                                var chart = new google.visualization.Table(document.getElementById('table_div'));
-                                chart.draw(datatable);
-                            });
-                        }
-                    },
-                    packages: ['table']
-                });
+                makeApiCall();
             }
         }
 

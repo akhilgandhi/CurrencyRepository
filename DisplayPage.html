@@ -150,12 +150,27 @@
     <h1>
         Currency Registry
     </h1>
-    
-    <label for="date">Please enter date</label><input id="date" type="date" />
-    <label for="denomination">Please enter denomination</label><input id="denomination" type="number" />
-    <label for="currencyValue">Please enter currency value</label><input id="currencyValue" type="text" />
-    <button id="save-button" onclick="handleSaveClick()">Save</button>
-    <p>Sheets data</p>
+    <table>
+        <tr>
+            <td><label for="date">Please enter date</label></td>
+            <td><input id="date" type="date" /></td>
+        </tr>
+        <tr>
+            <td><label for="denomination">Please enter denomination</label></td>
+            <td><input id="denomination" type="number" /></td>
+        </tr>
+        <tr>
+            <td><label for="currencyValue">Please enter currency value</label></td>
+            <td><input id="currencyValue" type="text" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button id="save-button" onclick="handleSaveClick()">Save</button>
+            </td>
+        </tr>
+    </table>
+
+    <p>Saved data</p>
     <div class="sheets-data">
         <table id="data">
 

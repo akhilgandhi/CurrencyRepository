@@ -40,7 +40,10 @@ function makeApiCall(action = "read") {
         }
         else {
             console.log("invalid input");
-            window.location.href = "https://akhilgandhi.github.io/CurrencyRepository/DisplayPage.html";
+            window.setTimeout(function() {
+                window.location.href = "https://akhilgandhi.github.io/CurrencyRepository/DisplayPage.html";
+            }, 5000);
+            
         }
     }
     else {

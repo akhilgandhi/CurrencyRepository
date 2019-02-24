@@ -28,29 +28,33 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Currency Registry</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="DisplayPage.html">Edit<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="SearchPage.html">Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <button id="signin-button" class="btn btn-outline-primary" onclick="handleSignInClick()">Sign in</button>
-                    </li>
-                    <li class="nav-item">
-                        <button id="signout-button" class="btn btn-outline-danger" onclick="handleSignOutClick()">Sign out</button>
-                    </li>
-                </ul>
+            <div class="row">
+                <div class="col-sm">
+                    <a class="navbar-brand" href="#">Currency Registry</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="col-sm">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="DisplayPage.html">Edit<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="SearchPage.html">Search</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <button id="signin-button" class="btn btn-outline-primary" onclick="handleSignInClick()">Sign in</button>
+                    <button id="signout-button" class="btn btn-outline-danger" onclick="handleSignOutClick()">Sign out</button>
+                </div>
             </div>
         </div>
     </nav>

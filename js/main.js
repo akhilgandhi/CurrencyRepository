@@ -24,7 +24,7 @@ function makeApiCall(action = "read") {
             // How the input data should be inserted.
             //insertDataOption: '',  // TODO: Update placeholder value.
         };
-        if (check === true) {
+        if (checks === true) {
             var valueRangeBody = {
                 // TODO: Add desired properties to the request body.
                 "values": writeVal

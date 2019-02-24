@@ -25,41 +25,66 @@
         3. For additional information on authentication, see
            https://developers.google.com/sheets/api/quickstart/js#step_2_set_up_the_sample
         -->
-    <div class="container">
-        <!-- Content here -->
-        <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
-        <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
 
-        <h1>
-            Currency Registry
-        </h1>
-        <table>
-            <tr>
-                <td><label for="date">Please enter date</label></td>
-                <td><input id="date" type="date" /></td>
-            </tr>
-            <tr>
-                <td><label for="denomination">Please enter denomination</label></td>
-                <td><input id="denomination" type="number" /></td>
-            </tr>
-            <tr>
-                <td><label for="currencyValue">Please enter currency value</label></td>
-                <td><input id="currencyValue" type="text" /></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <button id="save-button" onclick="handleSaveClick()">Save</button>
-                </td>
-            </tr>
-        </table>
-
-        <p>Saved data</p>
-        <div class="sheets-data">
-            <table id="data">
-
-            </table>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Currency Registry</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="DisplayPage.html">Edit<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="SearchPage.html">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
+
+    <h1>
+        Currency Registry
+    </h1>
+    <table>
+        <tr>
+            <td><label for="date">Please enter date</label></td>
+            <td><input id="date" type="date" /></td>
+        </tr>
+        <tr>
+            <td><label for="denomination">Please enter denomination</label></td>
+            <td><input id="denomination" type="number" /></td>
+        </tr>
+        <tr>
+            <td><label for="currencyValue">Please enter currency value</label></td>
+            <td><input id="currencyValue" type="text" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button id="save-button" onclick="handleSaveClick()">Save</button>
+            </td>
+        </tr>
+    </table>
+
+    <p>Saved data</p>
+    <div class="sheets-data">
+        <table id="data">
+
+        </table>
     </div>
+
 
     <script src="js/main.js"></script>
     <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"

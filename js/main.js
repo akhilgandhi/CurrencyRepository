@@ -5,7 +5,7 @@ function makeApiCall(action = "read") {
     if (action == "write") {
         var writeVal = new Array(1);
         writeVal[0] = new Array(3);
-        writeVal[0][0] = document.getElementById('date').value;
+        writeVal[0][0] = document.getElementById('date-input').value;
         writeVal[0][1] = document.getElementById('denomination').value;
         writeVal[0][2] = document.getElementById('currencyValue').value;
         var params = {

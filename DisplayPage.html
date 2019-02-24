@@ -26,53 +26,50 @@
            https://developers.google.com/sheets/api/quickstart/js#step_2_set_up_the_sample
         -->
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <a class="navbar-brand" href="#">Currency Registry</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="col-sm">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="DisplayPage.html">Edit<span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="SearchPage.html">Search</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <button id="signin-button" class="btn btn-outline-primary" onclick="handleSignInClick()">Sign in</button>
-                    <button id="signout-button" class="btn btn-outline-danger" onclick="handleSignOutClick()">Sign out</button>
-                </div>
-            </div>
+    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="#">Currency Registry</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="DisplayPage.html">Edit<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="SearchPage.html">Search</a>
+                </li>
+            </ul>
+        </div>
+        <div class="my-2 my-lg-0">
+            <button id="signin-button" class="btn btn-outline-primary mr-sm-2" onclick="handleSignInClick()">Sign in</button>
+            <button id="signout-button" class="btn btn-outline-danger my-2 my-sm-0" onclick="handleSignOutClick()">Sign
+                out</button>
+        </div>
+        </div>
         </div>
     </nav>
 
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Currency Registry</h1>
-            <p class="lead">This page can be used to add or view currency info previously added</p>
-            <hr class="my-4">
-            <p>Data will be saved in google drive using google spreadsheets. This page requires authentication. Click
-                "Sign in" to authenticate.</p>
-        </div>
-    </div>
+    <main role="main">
 
-    <div class="container">
-        <table>
-            <tr>
-                <td>
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-3">Currency Registry</h1>
+                <p class="lead">This page can be used to add or view currency info previously added</p>
+                <hr class="my-4">
+                <p>Data will be saved in google drive using google spreadsheets. This page requires authentication.
+                    Click
+                    "Sign in" to authenticate.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
                     <label for="date-input">Please enter date</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -80,8 +77,8 @@
                         </div>
                         <input type="text" class="form-control" id="date-input" aria-describedby="basic-addon3">
                     </div>
-                </td>
-                <td>
+                </div>
+                <div class="col-md-4">
                     <label for="denomination">Please enter denomination</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -89,22 +86,18 @@
                         </div>
                         <input type="number" class="form-control" id="denomination" aria-describedby="basic-addon2">
                     </div>
-                </td>
-                <td>
+                </div>
+                <div class="col-md-4">
                     <label for="currencyValue">Please enter currency number</label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="currencyValue" aria-label="currencyValue">
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <button id="save-button" class="btn btn-outline-success" onclick="handleSaveClick()">Save</button>
-                </td>
-            </tr>
-        </table>
-        <br/>
-    </div>
+                </div>
+            </div>
+            <button id="save-button" class="btn btn-outline-success" onclick="handleSaveClick()">Save</button>
+            <br />
+        </div>
+    </main>
 
     <script src="js/main.js"></script>
     <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"

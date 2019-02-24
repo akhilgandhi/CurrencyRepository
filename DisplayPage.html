@@ -60,18 +60,27 @@
     </nav>
 
     <div class="jumbotron jumbotron-fluid">
-        <h1 class="display-4">Currency Registry</h1>
-        <p class="lead">This page can be used to add or view currency info previously added</p>
-        <hr class="my-4">
-        <p>Data will be saved in google drive using google spreadsheets. This page requires authentication. Click
-            "Sign in" to authenticate.</p>
+        <div class="container">
+            <h1 class="display-4">Currency Registry</h1>
+            <p class="lead">This page can be used to add or view currency info previously added</p>
+            <hr class="my-4">
+            <p>Data will be saved in google drive using google spreadsheets. This page requires authentication. Click
+                "Sign in" to authenticate.</p>
+        </div>
     </div>
 
     <div class="container">
         <table>
             <tr>
-                <td><label for="date">Please enter date</label></td>
-                <td><input id="date" type="date" /></td>
+                <td>
+                    <label for="date-input">Please enter date</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">dd/mm/yyyy</span>
+                        </div>
+                        <input type="text" class="form-control" id="date-input" aria-describedby="basic-addon3">
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td><label for="denomination">Please enter denomination</label></td>
@@ -89,11 +98,10 @@
         </table>
 
         <p>Saved data</p>
-        <div class="sheets-data">
-            <table id="data">
 
-            </table>
-        </div>
+        <table id="data">
+
+        </table>
 
 
     </div>

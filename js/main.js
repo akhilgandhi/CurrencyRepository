@@ -38,6 +38,9 @@ function makeApiCall(action = "read") {
                 console.error('error: ' + reason.result.error.message);
             });
         }
+        else {
+            console.log("invalid input");
+        }
     }
     else {
         var params = {

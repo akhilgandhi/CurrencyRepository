@@ -13,6 +13,11 @@ function makeApiCall(action = "read") {
             checks = false;
         }
         writeVal[0][2] = document.getElementById('currencyValue').value;
+        var txt = writeVal[0][0].replace("/","");
+        if (txt === writeVal[0][2]) {
+            document.getElementById('errorCurrency').innerHTML = "Currency value doesn't match with date";
+            check = false;
+        }
         var params = {
             // The ID of the spreadsheet to update.
             spreadsheetId: ssId,  // TODO: Update placeholder value.

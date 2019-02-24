@@ -110,6 +110,7 @@ function handleSaveClick() {
 
 function populateSheet(result) {
     var table = document.getElementById('data');
+    table.classList.add("table table-borderless table-dark");
     for (var row = 0; row < 8; row++) {
         var rows = table.insertRow(-1);
         for (var col = 0; col < 3; col++) {

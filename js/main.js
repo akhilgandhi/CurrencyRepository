@@ -14,6 +14,7 @@ function makeApiCall(action = "read") {
         }
         writeVal[0][2] = document.getElementById('currencyValue').value;
         var txt = writeVal[0][0].replace("/","");
+        checks = true;
         if (txt === writeVal[0][2]) {
             document.getElementById('errorCurrency').innerHTML = "Currency value doesn't match with date";
             checks = false;

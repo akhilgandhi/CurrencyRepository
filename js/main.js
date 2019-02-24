@@ -110,6 +110,7 @@ function handleSaveClick() {
 
 function populateSheet(result) {
     var table = document.getElementById('data');
+    console.log(result.length);
     for (var row = 0; row < result.length; row++) {
         var rows = table.insertRow(-1);
         for (var col = 0; col < 3; col++) {

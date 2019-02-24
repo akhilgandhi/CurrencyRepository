@@ -27,7 +27,7 @@ function makeApiCall(action = "read") {
         request.then(function (response) {
             // TODO: Change code below to process the `response` object:
             console.log(response.result);
-            location.reload(true);
+            window.location.href = "https://akhilgandhi.github.io/CurrencyRepository/";
         }, function (reason) {
             console.error('error: ' + reason.result.error.message);
         });

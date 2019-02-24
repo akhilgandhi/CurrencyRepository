@@ -7,6 +7,9 @@ function makeApiCall(action = "read") {
         writeVal[0] = new Array(3);
         writeVal[0][0] = document.getElementById('date-input').value;
         writeVal[0][1] = document.getElementById('denomination').value;
+        if (isNaN(writeVal[0][1]) || writeVal[0][1] !== 1 || writeVal[0][1] !== 5 || writeVal[0][1] !== 10 || writeVal[0][1] !== 20 || writeVal[0][1] !== 50 || writeVal[0][1] !== 100 || writeVal[0][1] !== 200 || writeVal[0][1] !== 500 || writeVal[0][1] !== 2000 ) {
+            document.getElementById('errorNumber').innerHTML = 'Invalid denomination. Only 1, 5, 10, 20, 50, 100, 200, 500, 2000 allowed';
+        }
         writeVal[0][2] = document.getElementById('currencyValue').value;
         var params = {
             // The ID of the spreadsheet to update.

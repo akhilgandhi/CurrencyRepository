@@ -68,6 +68,7 @@ function makeApiCall(action = "read") {
         var request = gapi.client.sheets.spreadsheets.values.get(params);
         request.then(function (response) {
             // TODO: Change code below to process the `response` object:
+            console.log(response.result);
             localStorage.setItem('searchData', response.result);
             populateSheet(response.result);
         }, function (reason) {

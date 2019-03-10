@@ -68,7 +68,7 @@ function makeApiCall(action = "read") {
         var request = gapi.client.sheets.spreadsheets.values.get(params);
         request.then(function (response) {
             // TODO: Change code below to process the `response` object:
-            console.log(response.result);
+            localStorage.setItem('searchData', response.result);
             populateSheet(response.result);
         }, function (reason) {
             console.error('error: ' + reason.result.error.message);
@@ -130,5 +130,18 @@ function populateSheet(result) {
             var cell = rows.insertCell(-1);
             cell.innerHTML += result.values[row][col];
         }
+    }
+}
+
+var searchQuery = document.getElementById('searchText');
+
+function searchText() {
+
+    let items;
+
+    if(localStorage.getItem('searchData')) {
+        items = JSON.parse(localStorage.getItem('searchData'));
+
+        document.getElementById('result').innerHTML = items;
     }
 }

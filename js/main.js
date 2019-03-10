@@ -3,15 +3,10 @@ function makeApiCall(action = "read") {
     var ssId = '1SFbgvc3m2pcyX_VUWA5YJHGvBintNSBrh9xKzJ9sEoo';
     var sRange = 'Sheet1';
     if (action == "write") {
-        var checks = true;
         var writeVal = new Array(1);
         writeVal[0] = new Array(3);
         writeVal[0][0] = document.getElementById('date-input').value;
         writeVal[0][1] = document.getElementById('denomination').value;
-        //if (isNaN(writeVal[0][1]) || writeVal[0][1] !== 1 || writeVal[0][1] !== 5 || writeVal[0][1] !== 10 || writeVal[0][1] !== 20 || writeVal[0][1] !== 50 || writeVal[0][1] !== 100 || writeVal[0][1] !== 200 || writeVal[0][1] !== 500 || writeVal[0][1] !== 2000) {
-        //    document.getElementById('errorNumber').innerHTML = 'Invalid denomination. Only 1, 5, 10, 20, 50, 100, 200, 500, 2000 allowed';
-        //    checks = false;
-        //}
         writeVal[0][2] = document.getElementById('currencyValue').value;
         var params = {
             // The ID of the spreadsheet to update.
@@ -24,27 +19,19 @@ function makeApiCall(action = "read") {
             // How the input data should be inserted.
             //insertDataOption: '',  // TODO: Update placeholder value.
         };
-        if (checks === true) {
-            var valueRangeBody = {
-                // TODO: Add desired properties to the request body.
-                "values": writeVal
-            };
-            var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
-            request.then(function (response) {
-                // TODO: Change code below to process the `response` object:
-                console.log(response.result);
-                window.location.href = "https://akhilgandhi.github.io/CurrencyRepository/";
-            }, function (reason) {
-                console.error('error: ' + reason.result.error.message);
-            });
-        }
-        else {
-            console.log("invalid input");
-            window.setTimeout(function() {
-                window.location.href = "https://akhilgandhi.github.io/CurrencyRepository/DisplayPage.html";
-            }, 5000);
-            
-        }
+        var valueRangeBody = {
+            // TODO: Add desired properties to the request body.
+            "values": writeVal
+        };
+        var request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+        request.then(function (response) {
+            // TODO: Change code below to process the `response` object:
+            console.log(response.result);
+            window.location.href = "https://akhilgandhi.github.io/CurrencyRepository/";
+        }, function (reason) {
+            console.error('error: ' + reason.result.error.message);
+        });
+
     }
     else {
         var params = {
@@ -140,7 +127,7 @@ function searchText() {
 
     let items;
 
-    if(localStorage.getItem('searchData')) {
+    if (localStorage.getItem('searchData')) {
         items = JSON.parse(localStorage.getItem('searchData'));
 
         document.getElementById('result').innerHTML = items;
